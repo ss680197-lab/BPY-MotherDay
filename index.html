@@ -167,8 +167,8 @@
 
 <div id="overlay">
     <div class="modal">
-        <div id="prize-text" style="font-size:18px; font-weight:bold; color:var(--dark-pink); margin-bottom:20px; white-space:pre-line;"></div>
-        <button onclick="closeModal()" style="background:var(--main-pink); color:white; border:none; padding:10px 25px; border-radius:20px; cursor:pointer;">收下獎項 🌸</button>
+        <div id="prize-text" style="font-size:18px; font-weight:bold; color:var(--dark-pink); margin-bottom:20px; white-space:pre-line; line-height:1.4;"></div>
+        <button onclick="closeModal()" style="background:var(--main-pink); color:white; border:none; padding:10px 25px; border-radius:20px; cursor:pointer; font-weight:bold;">收下獎項 🌸</button>
     </div>
 </div>
 
@@ -185,6 +185,7 @@
     let log = JSON.parse(localStorage.getItem('bpyLog')) || [];
     let isAnimating = false;
 
+    // 動態權重分配
     function getWeightsByChances(c) {
         if (c === 1) return [2, 35, 30, 8, 25]; 
         else if (c === 2) return [5, 25, 25, 15, 30];
@@ -257,7 +258,19 @@
 
                 setTimeout(() => {
                     document.getElementById('main-body').classList.remove('shake-active');
-                    document.getElementById('prize-text').innerHTML = "<span style='font-size:14px; color:#999; font-weight:normal;'>Congratulations!</span><br><br>🎊 恭喜獲得 🎊<br>" + currentPrize;
+                    
+                    // ✨ 優化彈出視窗：新增截圖提醒
+                    document.getElementById('prize-text').innerHTML = `
+                        <span style='font-size:14px; color:#999; font-weight:normal;'>Congratulations!</span><br><br>
+                        <span style='color:#d63384; font-size:20px;'>🎊 恭喜獲得 🎊</span><br>
+                        <div style='margin: 15px 0; padding: 12px; background: #fff5f7; border-radius: 15px; border: 1px dashed #ff8fa3; color: #4a4a4a;'>
+                            ${currentPrize}
+                        </div>
+                        <p style='font-size:13px; color:#ff4d6d; font-weight:bold; margin-top:10px;'>
+                            📸 請將此中獎畫面截圖傳給教練紀錄
+                        </p>
+                    `;
+
                     document.getElementById('overlay').style.display = 'flex';
                     document.getElementById('egg-drop-zone').innerHTML = '';
                     isAnimating = false;
