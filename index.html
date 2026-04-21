@@ -9,23 +9,21 @@
         :root { 
             --main-pink: #ff8fa3; 
             --dark-pink: #d63384; 
-            --bg-gradient: radial-gradient(circle at top right, #fff5f7 0%, #ffe4e9 40%, #ffd1dc 100%);
-            --glass-bg: rgba(255, 255, 255, 0.85);
+            --bg-gradient: radial-gradient(circle at center, #fff5f7 0%, #ffe4e9 40%, #ffd1dc 100%);
         }
-
+        
         body { 
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; 
+            font-family: "Microsoft JhengHei", sans-serif; 
             text-align: center; 
             background: var(--bg-gradient); 
             background-attachment: fixed;
-            color: #4a4a4a; 
+            color: #5a5a5a; 
             padding: 15px; 
             margin: 0; 
             overflow-x: hidden; 
             min-height: 100vh;
         }
         
-        /* 螢幕震動特效 */
         @keyframes screenShake {
             0% { transform: translate(0, 0); }
             10% { transform: translate(-5px, -5px); }
@@ -36,99 +34,79 @@
         }
         .shake-active { animation: screenShake 0.5s ease-in-out; }
 
-        /* 啟動遮罩 - 高級玫瑰金質感 */
-        #start-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(135deg, #ff8fa3 0%, #d63384 100%); 
-            color: white; z-index: 9999; display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; cursor: pointer; 
+        #start-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--main-pink); color: white; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; }
+        
+        .container { 
+            background: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            width: 100%; 
+            max-width: 420px; 
+            padding: 25px; 
+            border-radius: 40px; 
+            box-shadow: 0 20px 50px rgba(214, 51, 132, 0.1); 
+            margin: 0 auto; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            position: relative; 
+            transition: transform 0.1s; 
         }
         
-        /* 容器 - 磨砂玻璃質感 */
-        .container { 
-            background: var(--glass-bg); 
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            width: 100%; max-width: 420px; padding: 25px; 
-            border-radius: 40px; 
-            box-shadow: 0 20px 50px rgba(214, 51, 132, 0.15); 
-            margin: 10px auto; 
-            border: 1px solid rgba(255, 255, 255, 0.6); 
-            position: relative; 
-        }
+        .music-ctrl { position: absolute; top: 15px; right: 20px; font-size: 20px; cursor: pointer; z-index: 100; background: rgba(255,255,255,0.8); border-radius: 50%; width: 35px; height: 35px; border: 1px solid #ffccd5; display: flex; align-items: center; justify-content: center; }
 
-        .music-ctrl { 
-            position: absolute; top: 15px; right: 20px; font-size: 18px; 
-            cursor: pointer; z-index: 100; background: #fff; border-radius: 50%; 
-            width: 35px; height: 35px; border: 1px solid #ffccd5; 
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        h1 { color: var(--dark-pink); font-size: 22px; margin: 0 0 5px 0; letter-spacing: 1px; }
-        .sub-title { color: #d63384; font-size: 15px; margin-bottom: 12px; font-weight: 500; opacity: 0.8; }
+        h1 { color: var(--dark-pink); font-size: 20px; margin: 0 0 5px 0; }
+        .sub-title { color: #d63384; font-size: 16px; margin-bottom: 10px; font-weight: bold; }
         
         .promo-banner { 
-            background: rgba(255, 255, 255, 0.5); 
-            border: 1px solid #ffccd5; border-radius: 18px; 
-            padding: 15px; margin-bottom: 18px; font-size: 13px; 
+            background: rgba(255, 250, 251, 0.5); 
+            border: 1px solid #ffccd5; border-radius: 15px; 
+            padding: 12px; margin-bottom: 15px; font-size: 13px; 
             line-height: 1.7; color: #555; text-align: left; 
         }
 
-        .chance-info { 
-            font-size: 18px; font-weight: bold; color: white; 
-            margin-bottom: 15px; background: var(--main-pink); 
-            display: inline-block; padding: 6px 24px; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(255, 143, 163, 0.4);
-        }
+        .chance-info { font-size: 18px; font-weight: bold; color: white; margin-bottom: 10px; background: var(--main-pink); display: inline-block; padding: 5px 25px; border-radius: 50px; box-shadow: 0 5px 15px rgba(255, 143, 163, 0.3); }
 
-        /* 扭蛋機樣式保持專業感 */
         .gacha-machine { width: 220px; height: 300px; margin: 0 auto; position: relative; }
         .glass-dome { 
             width: 180px; height: 180px; 
-            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(224, 247, 250, 0.3) 50%, rgba(128, 222, 234, 0.1) 100%);
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(224, 247, 250, 0.3) 40%, rgba(128, 222, 234, 0.2) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            outline: 3px solid rgba(249, 249, 249, 0.4);
             border-radius: 50%; position: absolute; top: 0; left: 20px; z-index: 5; overflow: hidden; 
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
         }
         
-        .deco-egg { width: 34px; height: 34px; border-radius: 50%; position: absolute; box-shadow: inset -2px -3px 6px rgba(0,0,0,0.1); }
-        @keyframes eggShuffle { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(10px, -10px) rotate(15deg); } 75% { transform: translate(-10px, 10px) rotate(-15deg); } }
-        .shuffling { animation: eggShuffle 0.12s infinite linear; }
+        .deco-egg { width: 32px; height: 32px; border-radius: 50%; position: absolute; box-shadow: inset -2px -2px 5px rgba(0,0,0,0.15); }
+        @keyframes eggShuffle { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(12px, -12px); } 75% { transform: translate(-12px, 12px); } }
+        .shuffling { animation: eggShuffle 0.1s infinite linear; }
 
-        .machine-base { width: 170px; height: 150px; background: #ff4d6d; border: 2px solid var(--dark-pink); border-radius: 20px 20px 30px 30px; position: absolute; bottom: 20px; left: 25px; z-index: 10; box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2); }
-        .dial { width: 60px; height: 60px; background: #fff; border: 4px solid var(--dark-pink); border-radius: 50%; position: absolute; top: 25px; left: 55px; cursor: pointer; }
-        .dial::after { content: ''; width: 38px; height: 8px; background: var(--dark-pink); position: absolute; top: 22px; left: 7px; border-radius: 10px; }
+        .machine-base { width: 170px; height: 150px; background: #ff4d6d; border: 3px solid var(--dark-pink); border-radius: 15px 15px 25px 25px; position: absolute; bottom: 20px; left: 25px; z-index: 10; }
+        .dial { width: 60px; height: 60px; background: #fff; border: 5px solid var(--dark-pink); border-radius: 50%; position: absolute; top: 25px; left: 55px; }
+        .dial::after { content: ''; width: 40px; height: 10px; background: var(--dark-pink); position: absolute; top: 20px; left: 5px; border-radius: 5px; }
         @keyframes dialSpin { from { transform: rotate(0deg); } to { transform: rotate(1080deg); } }
         .dial-active { animation: dialSpin 1.2s cubic-bezier(0.45, 0.05, 0.55, 0.95); }
 
-        .real-egg { width: 60px; height: 60px; position: absolute; top: 180px; left: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, #ffccd5, #ff8fa3); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        @keyframes eggFall { 0% { transform: translateY(0) scale(0.5); opacity: 0; } 100% { transform: translateY(115px) scale(1); opacity: 1; } }
+        #egg-drop-zone { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 90; pointer-events: none; }
+        .real-egg { width: 60px; height: 60px; position: absolute; top: 180px; left: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, #ffccd5, #ff8fa3); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        @keyframes eggFall { 0% { transform: translateY(0); opacity: 0; } 100% { transform: translateY(115px); opacity: 1; } }
         .egg-active { animation: eggFall 0.8s forwards; }
         
-        .btn-draw { 
-            background: linear-gradient(to right, #ff8fa3, #d63384); color: white; border: none; width: 100%; padding: 16px; 
-            border-radius: 50px; font-size: 18px; font-weight: bold; margin-top: 15px; cursor: pointer; 
-            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.3); transition: 0.3s;
-        }
-        .btn-draw:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(214, 51, 132, 0.2); }
-        .btn-draw:disabled { background: #dcdcdc; color: #999; box-shadow: none; cursor: not-allowed; }
+        .btn-draw { background: linear-gradient(to right, #ff8fa3, #d63384); color: white; border: none; width: 100%; padding: 15px; border-radius: 30px; font-size: 18px; font-weight: bold; margin-top: 10px; cursor: pointer; box-shadow: 0 8px 20px rgba(214, 51, 132, 0.3); position: relative; z-index: 200; }
+        .btn-draw:disabled { background: #eee; color: #aaa; box-shadow: none; }
 
-        .history-list { font-size: 12px; color: #777; max-height: 90px; overflow-y: auto; background: rgba(255, 255, 255, 0.4); padding: 12px; border-radius: 15px; border: 1px solid rgba(255, 143, 163, 0.2); text-align: left; }
-        .prize-detail { text-align: left; margin-top: 20px; padding: 15px; background: rgba(255, 255, 255, 0.6); border-radius: 20px; font-size: 12px; color: #666; border: 1px solid rgba(255, 255, 255, 0.8); }
-        .event-rules { font-size: 11px; color: #aaa; text-align: left; margin-top: 18px; padding: 0 5px; line-height: 1.5; }
-        .admin-footer { margin-top: 15px; display: flex; justify-content: space-around; font-size: 12px; color: rgba(0,0,0,0.15); padding-bottom: 20px; }
+        .history-list { font-size: 12px; color: #666; max-height: 80px; overflow-y: auto; background: rgba(255, 255, 255, 0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255, 143, 163, 0.2); text-align: left; }
+        .prize-detail { text-align: left; margin-top: 15px; padding: 12px; background: rgba(255, 255, 255, 0.4); border-radius: 15px; font-size: 11px; color: #888; border: 1px solid rgba(255,255,255,0.5); }
+        .event-rules { font-size: 10px; color: #999; text-align: left; margin-top: 15px; padding: 0 5px; line-height: 1.4; }
+        .admin-footer { margin-top: 10px; display: flex; justify-content: space-around; font-size: 12px; color: rgba(0,0,0,0.1); padding-bottom: 15px; cursor: pointer; }
 
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal { background: white; padding: 40px 25px; border-radius: 35px; width: 80%; border: none; box-shadow: 0 25px 60px rgba(0,0,0,0.3); }
+        .modal { background: white; padding: 30px 20px; border-radius: 30px; width: 85%; border: none; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body id="main-body">
 
 <div id="start-overlay" onclick="initApp()">
-    <div style="font-size: 50px; margin-bottom: 15px;">✨</div>
-    <h2 style="font-weight: 300; letter-spacing: 2px;">BPY220 中壢店</h2>
-    <p>點擊開啟優雅之旅</p>
+    <div style="font-size: 60px; margin-bottom: 10px;">🌸</div>
+    <h2>點擊開啟扭蛋機</h2>
 </div>
 
 <audio id="bgm" loop src="https://cdn.pixabay.com/audio/2022/02/22/audio_d0c6ff1adb.mp3"></audio>
@@ -139,9 +117,10 @@
     <div id="music-btn" class="music-ctrl" onclick="toggleMusic(event)">🔇</div>
     <h1>萬元課程等你抽！</h1>
     <div class="sub-title">BPY220 中壢 母親節扭蛋機</div>
+    
     <div class="promo-banner">
         凡於 <strong>5/1-5/31</strong> 期間消費金額達 <strong>4 萬</strong>，即可獲得扭蛋機會乙次。達 <strong>7 萬</strong>，貳次；<strong>9 萬</strong>可獲得參次扭蛋機會。<br>
-        <span style="color: #d63384; font-weight: bold;">🌸 活動獎項限於 6/30 前使用完畢。</span>
+        🌸 活動獎項限於 <strong>6/30 前</strong> 使用完畢。
     </div>
     
     <div class="chance-info">剩餘機會：<span id="chances">0</span> 次</div>
@@ -159,14 +138,14 @@
         <div id="egg-drop-zone"></div>
     </div>
 
-    <button id="draw-btn" class="btn-draw" onclick="draw()">即刻轉動驚喜</button>
+    <button id="draw-btn" class="btn-draw" onclick="draw()">點擊開始扭蛋</button>
 
-    <div style="text-align:left; margin-top:20px; font-size:14px; color:var(--dark-pink); font-weight:bold; padding-left:5px;">專屬獎勵紀錄</div>
+    <div style="text-align:left; margin-top:15px; font-size:14px; color:var(--dark-pink); font-weight:bold;">中獎歷史紀錄</div>
     <div id="history-list" class="history-list">尚未有中獎紀錄</div>
 
     <div class="prize-detail">
-        <h3 style="margin:0 0 8px 0; color:var(--dark-pink); font-size:13px;">🎁 寵愛限定獎項</h3>
-        <ul style="padding-left:18px; margin:0; line-height: 1.6;">
+        <h3 style="margin:0 0 5px 0; color:var(--dark-pink); font-size:13px;">🎁 活動獎項說明</h3>
+        <ul style="padding-left:18px; margin:0; line-height: 1.5;">
             <li>贈四堂皮拉提斯課程（限本人）</li>
             <li>當次購課單價金額折抵$50（限本人）</li>
             <li>Indiba體驗券15分鐘（限本人）</li>
@@ -181,15 +160,15 @@
     </div>
 
     <div class="admin-footer">
-        <span onclick="addChances()">店家核銷碼</span>
+        <span onclick="addChances()">店家核銷碼登入</span>
         <span onclick="clearHistory()">數據重置</span>
     </div>
 </div>
 
 <div id="overlay">
     <div class="modal">
-        <div id="prize-text" style="font-size:20px; font-weight:bold; color:var(--dark-pink); margin-bottom:25px; white-space:pre-line; line-height:1.4;"></div>
-        <button onclick="closeModal()" style="background:linear-gradient(to right, #ff8fa3, #d63384); color:white; border:none; padding:12px 35px; border-radius:50px; cursor:pointer; font-weight:bold; box-shadow: 0 4px 15px rgba(214, 51, 132, 0.2);">收下獎項 🌸</button>
+        <div id="prize-text" style="font-size:18px; font-weight:bold; color:var(--dark-pink); margin-bottom:20px; white-space:pre-line;"></div>
+        <button onclick="closeModal()" style="background:var(--main-pink); color:white; border:none; padding:10px 25px; border-radius:20px; cursor:pointer;">收下獎項 🌸</button>
     </div>
 </div>
 
@@ -205,6 +184,12 @@
     let chances = parseInt(localStorage.getItem('bpyChances')) || 0;
     let log = JSON.parse(localStorage.getItem('bpyLog')) || [];
     let isAnimating = false;
+
+    function getWeightsByChances(c) {
+        if (c === 1) return [2, 35, 30, 8, 25]; 
+        else if (c === 2) return [5, 25, 25, 15, 30];
+        else return [10, 20, 20, 20, 30];
+    }
 
     function initApp() {
         const bgm = document.getElementById('bgm');
@@ -237,10 +222,10 @@
     function draw() {
         if (chances <= 0 || isAnimating) return;
         isAnimating = true;
+        const weights = getWeightsByChances(chances);
         chances--;
         localStorage.setItem('bpyChances', chances);
         
-        const weights = [5, 30, 25, 10, 30]; 
         const totalW = weights.reduce((s, w) => s + w, 0);
         let ran = Math.random() * totalW;
         let selectedIndex = 0;
@@ -252,7 +237,6 @@
 
         document.getElementById('sfx-spin').currentTime = 0;
         document.getElementById('sfx-spin').play().catch(()=>{});
-
         document.getElementById('dial').classList.add('dial-active');
         document.querySelectorAll('.deco-egg').forEach(d => d.classList.add('shuffling'));
 
